@@ -1,0 +1,55 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>190</x><y>670</y><w>290</w><h>290</h></coordinates><panel_attributes>/Vehiculo/
+--
+- patente: String
+- marca: String
+- capacidadPasajeros: int
+- anioFabricacion: int
+--
++ Vehiculo(patente: String, marca: String, capacidadPasajeros: int, anioFabricacion: int)
++ getPatente(): String
++ getMarca(): String
++ getCapacidadPasajeros(): int
++ getAnioFabricacion(): int
+/+ realizarServicioTuristico(): void/ </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>1110</y><w>200</w><h>170</h></coordinates><panel_attributes>LanchaTuristica
+--
+- tipoMotor: String
+--
++ lanchaTuristica(patente: String, marca: String, capacidadPasajeros: int, anioFabricacion: int, tipoMotor: String)
++ getTipoMotor(): String
++ realizarServicioTuristico(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1110</y><w>200</w><h>170</h></coordinates><panel_attributes>ColectivoTuristico
+--
+- cantidadPisos: int
+--
++ colectivoTuristico(patente: String, marca: String, capacidadPasajeros: int, anioFabricacion: int, cantidadPisos: int)
++ getCantidadPisos(): int
++ realizarServicioTuristico(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>1110</y><w>210</w><h>170</h></coordinates><panel_attributes>VanEjecutiva
+--
+- aireAcondicionado: boolean
+--
++ vanEjecutiva(patente: String, marca: String, capacidadPasajeros: int, anioFabricacion: int, aireAcondicionado: boolean)
++ getAireAcondicionado(): boolean
++ realizarServicioTuristico(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>40</x><y>950</y><w>240</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>220;10;10;160</additional_attributes></element><element><id>Relation</id><coordinates><x>300</x><y>950</y><w>40</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;20;160</additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>950</y><w>180</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;160;160</additional_attributes></element><element><id>UMLClass</id><coordinates><x>170</x><y>270</y><w>310</w><h>300</h></coordinates><panel_attributes>SistemaTurismo
+--
+- vehiculos: ArrayList
+--
++ SistemaTurismo()
++ iniciar(): void
++ agregarVehiculo(): void
++ mostrarTodosLosVehiculos(): void
++ RealizarServiciosTuristicos(): void
++ buscarVehiculoPorPatente(): void
++ mostrarVehiculosCapacidad(): void
++ mostrarVehiculosOrdenadosPorAnio(): void
++ mostrarVehiculosOrdenadorPorCapacidad(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>560</y><w>90</w><h>130</h></coordinates><panel_attributes>
+m1=1
+m2=0..*
+Administra
+</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>270</y><w>190</w><h>150</h></coordinates><panel_attributes>Principal
+--
+
+--
++ main(args: String[]:void)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLInterface</id><coordinates><x>580</x><y>460</y><w>340</w><h>100</h></coordinates><panel_attributes>Comparator&lt;Vehiculo&gt;
+--
++ ComparadorPorAnio(Vehiculo v1, Vehiculo v2): int
++ ComparadorPorCapacidad(Vehiculo v1, Vehiculo v2): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>330</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>460</y><w>300</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>280;20;10;10</additional_attributes></element></diagram>
