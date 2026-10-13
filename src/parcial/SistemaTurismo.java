@@ -149,6 +149,13 @@ public class SistemaTurismo {
     }
     public void mostrarTodosLosVehiculos(){
        
+       for (Vehiculo v : vehiculos){
+           System.out.println("===================");
+           System.out.println("Patente: " + v.getPatente());
+           System.out.println("Marca: " + v.getMarca());
+           System.out.println("Capacidad: " + v.getCapacidadPasajeros());
+           System.out.println("Año de fabricación: " + v.getAnioFabricacion());
+       }
     }
     public void iniciar(){
         int opcion = 0;
