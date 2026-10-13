@@ -24,11 +24,33 @@ public class SistemaTurismo {
         System.out.println("3. Lancha Turistica");
         
         System.out.println("Seleccione el numero del tipo de vehiculo que desea agregar: ");
-        int tipo = scanner.nextInt();
-        scanner.nextLine();
+        int tipo = 0;
+        String tipoOpcion = scanner.nextLine();
+        
+        try{
+            tipo = Integer.parseInt(tipoOpcion);
+        }
+        catch (NumberFormatException e) {
+            System.out.println("Debe ingresar un NUMERO valido.");
+        }
+        
+        
+        while (tipo < 1 || tipo > 3){
+            System.out.println("Debe ingresar 1, 2 o 3.");
+            System.out.println("Seleccione el tipo de vehiculo: ");
+            
+            tipoOpcion = scanner.nextLine();
+            
+            try{
+                tipo = Integer.parseInt(tipoOpcion);
+            }
+            catch(NumberFormatException e){
+                System.out.println("Debe ingresar un NUMERO valido.");
+            }
+        }
+        
         System.out.println("Patente: ");
         String patente = scanner.nextLine();
-        
         boolean patenteValida = false;
         
         while(!patenteValida){
@@ -67,32 +89,77 @@ public class SistemaTurismo {
         
         //Me pareció coherente que tambien tenga un máximo. 
         System.out.println("Capacidad de pasajeros: ");
-        int capacidadPasajeros = scanner.nextInt();
+        int capacidadPasajeros = 0;
+        String capacidadOpcion = scanner.nextLine();
+        try{
+            capacidadPasajeros = Integer.parseInt(capacidadOpcion);
+        }
+        catch (NumberFormatException e){
+            System.out.println("Debe ingresar una cantidad en NUMERO valida.");
+        }
         
         while (capacidadPasajeros <= 0 || capacidadPasajeros > 60){
             System.out.println("La capacidad de pasajeros debe ser mayor que 0 y menor que 60");
             System.out.println("Capacidad de pasajeros: ");
-            capacidadPasajeros = scanner.nextInt();
+            
+            capacidadOpcion = scanner.nextLine();
+            
+            try{
+                capacidadPasajeros = Integer.parseInt(capacidadOpcion);
+            }
+            catch (NumberFormatException e){
+                System.out.println("Debe ingresar una cantidad en NUMERO valida.");
+            }
         }
         
         int anioActual = LocalDate.now().getYear();
         
         System.out.println("Anio de fabricacion: ");
-        int anioFabricacion = scanner.nextInt();
+        int anioFabricacion = 0;
+        String anioOpcion = scanner.nextLine();
+        
+        try{
+            anioFabricacion = Integer.parseInt(anioOpcion);
+        }
+        catch (NumberFormatException e){
+            System.out.println("Debe ingresar un anio en NUMERO valido.");
+        }
         
         while(anioFabricacion < 1990 || anioFabricacion > anioActual){
             System.out.println("El anio debe estar entre 1990 y " + anioActual + ".");
             System.out.println("Anio de fabricacion: ");
-            anioFabricacion = scanner.nextInt();
+            anioOpcion = scanner.nextLine();
+            try{
+                anioFabricacion = Integer.parseInt(anioOpcion);
+            }
+            catch (NumberFormatException e){
+                System.out.println("Debe ingresar un anio en NUMERO valido.");
+            }
         }
         switch (tipo){
             case 1 -> {
                 System.out.println("Cantidad de pisos(1 o 2): ");
-                int cantidadPisos = scanner.nextInt();
+                int cantidadPisos = 0;
+                String pisosOpcion = scanner.nextLine();
+                
+                try{
+                    cantidadPisos = Integer.parseInt(pisosOpcion);
+                }
+                catch (NumberFormatException e){
+                    System.out.println("Debe ingresar la cantidad de pisos en NUMERO valido.");
+                }
                 while (cantidadPisos != 1 && cantidadPisos !=2){
                     System.out.println("La cantidad de pisos debe ser 1 o 2");
                     System.out.println("Cantidad de pisos(1 o 2): ");
-                    cantidadPisos = scanner.nextInt();
+                    
+                    pisosOpcion = scanner.nextLine();
+                    
+                    try{
+                        cantidadPisos = Integer.parseInt(pisosOpcion);
+                    }
+                    catch (NumberFormatException e){
+                        System.out.println("Debe ingresar la cantidad de pisos en NUMERO valido.");
+                    }
                 }
                 
                 ColectivoTuristico colectivo = new ColectivoTuristico(
@@ -103,7 +170,6 @@ public class SistemaTurismo {
             }
             
             case 2 -> {
-                scanner.nextLine();
                 System.out.println("Tiene aire acondicionado?(Si/No): ");
                 String respuesta = scanner.nextLine().toLowerCase();
                 
@@ -126,7 +192,6 @@ public class SistemaTurismo {
 
             
             case 3 -> {
-                scanner.nextLine();
                 System.out.println("Tipo de motor(NAFTA/DIESEL/ELECTRICO): ");
                 String tipoMotor = scanner.nextLine().toUpperCase();
                 
@@ -163,7 +228,7 @@ public class SistemaTurismo {
            System.out.println("Patente: " + v.getPatente());
            System.out.println("Marca: " + v.getMarca());
            System.out.println("Capacidad: " + v.getCapacidadPasajeros());
-           System.out.println("Año de fabricación: " + v.getAnioFabricacion());
+           System.out.println("Anioo de fabricacion: " + v.getAnioFabricacion());
            
            if (v instanceof ColectivoTuristico colectivo){
                System.out.println("Cantidad de pisos: " + colectivo.getCantidadPisos());
@@ -220,7 +285,21 @@ public class SistemaTurismo {
             return;
         }
         System.out.println("Ingrese una capacidad minima: ");
-        int capacidadMinima = scanner.nextInt();
+        int capacidadMinima = 0;
+        boolean capacidadValida = false;
+        
+        while(!capacidadValida){
+            String entrada = scanner.nextLine();
+            
+            try{
+                capacidadMinima = Integer.parseInt(entrada);
+                capacidadValida = true;
+            }
+            catch (NumberFormatException e){
+                System.out.println("Debe ingresar una capacidad minima en NUMERO valido.");
+            }
+        }
+        
         
         boolean encontrado = false;
         
@@ -256,8 +335,14 @@ public class SistemaTurismo {
             System.out.println("8. Salir");
             
             System.out.println("Seleccione una opcion: ");
-            opcion = scanner.nextInt();
-            
+            String entrada = scanner.nextLine();
+            try{
+                opcion = Integer.parseInt(entrada);
+            }
+            catch (NumberFormatException e){
+                System.out.println("Debe ingresar un NUMERO valido.");
+                continue;
+            }
             switch (opcion){
                 case 1 -> { 
                     System.out.println("Agregando vehiculo");
