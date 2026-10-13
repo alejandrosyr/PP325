@@ -3,6 +3,7 @@ package parcial;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDate;
+import java.util.Collections;
 
 /**
 * Código generado por la app UXFtoJava by Charly Cimino
@@ -16,6 +17,13 @@ public class SistemaTurismo {
     public SistemaTurismo(){
         vehiculos = new ArrayList<>();
         scanner = new Scanner(System.in);
+        
+        vehiculos.add(new ColectivoTuristico("AA123BB", "Mercedes Benz", 45, 2020, 2));
+        vehiculos.add(new ColectivoTuristico("AB456CD", "Scania", 50, 2022, 1));
+        vehiculos.add(new VanEjecutiva("AC789EF","Renault", 15, 2021, true));
+        vehiculos.add(new VanEjecutiva("AD321GH", "Toyota", 12, 2019, false));
+        vehiculos.add(new LanchaTuristica("LAN001", "Yamaha", 8, 2023, "NAFTA"));
+        vehiculos.add(new LanchaTuristica("LAN002", "Mercury", 10, 2022, "ELECTRICO"));
     }
     public void agregarVehiculo(){
         System.out.println("\n--- AGREGAR VEHICULO ---");
@@ -365,8 +373,28 @@ public class SistemaTurismo {
                     System.out.println("Mostrando vehiculos con capacidad mayor a un valor ingresado");
                     mostrarVehiculosCapacidad();
                 }
-                case 6 -> System.out.println("Mostrar vehiculos ordenados por anio de fabricacion descendente");
-                case 7 -> System.out.println("Mostrar vehiculos ordenados por capacidad descendente");
+                case 6 -> {
+                    System.out.println("Mostrando vehiculos ordenados por anio de fabricacion descendente");
+                    if (vehiculos.isEmpty()){
+                        System.out.println("No hay vehiculos registrados.");
+                        return;
+                    }
+                    ComparadorPorAnio comparadorAnio = new ComparadorPorAnio();
+                    
+                    Collections.sort(vehiculos, comparadorAnio);
+                    mostrarTodosLosVehiculos();
+                }
+                case 7 -> {
+                    if (vehiculos.isEmpty()){
+                        System.out.println("No hay vehiculos registrados");
+                        return;
+                    }
+                    System.out.println("Mostrando vehiculos ordenados por capacidad descendente");
+                    ComparadorPorCapacidad comparadorCapacidad = new ComparadorPorCapacidad();
+                    
+                    Collections.sort(vehiculos, comparadorCapacidad);
+                    mostrarTodosLosVehiculos();
+                }
                 case 8 -> System.out.println("Saliendo del sistema...");
                 default -> System.out.println("Opcion invalida");
             }

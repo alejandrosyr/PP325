@@ -20,7 +20,7 @@ public class ColectivoTuristico extends Vehiculo {
 
     @Override
     public void realizarServicioTuristico() {
-        System.out.println("El Colectivo Turistico de patente " + getPatente() + " está realizando un passeo.");
+        System.out.println("El Colectivo Turistico de patente " + getPatente() + " esta realizando un passeo.");
     }
 
 }

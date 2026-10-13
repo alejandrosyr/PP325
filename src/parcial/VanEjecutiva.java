@@ -18,7 +18,7 @@ public class VanEjecutiva extends Vehiculo {
     }
     @Override
     public void realizarServicioTuristico() {
-        System.out.println("La Van Ejecutiva de patente " + getPatente() + " está realizando un passeo.");
+        System.out.println("La Van Ejecutiva de patente " + getPatente() + " esta realizando un passeo.");
     }
 
 }
