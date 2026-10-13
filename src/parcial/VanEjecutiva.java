@@ -16,9 +16,9 @@ public class VanEjecutiva extends Vehiculo {
     public boolean getAireAcondicionado() {
         return aireAcondicionado;
     }
-
+    @Override
     public void realizarServicioTuristico() {
-        // Método a resolver...
+        System.out.println("La Van Ejecutiva de patente " + getPatente() + " está realizando un passeo.");
     }
 
 }

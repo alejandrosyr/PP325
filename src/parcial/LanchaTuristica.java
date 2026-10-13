@@ -19,7 +19,7 @@ public class LanchaTuristica extends Vehiculo {
 
     @Override
     public void realizarServicioTuristico() {
-        // Método a resolver...
+        System.out.println("La Lancha Turistica de patente " + getPatente() + " está realizando un passeo.");
     }
 
 }
