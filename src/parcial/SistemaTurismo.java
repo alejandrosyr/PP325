@@ -18,7 +18,7 @@ public class SistemaTurismo {
         scanner = new Scanner(System.in);
     }
     public void agregarVehiculo(){
-        System.out.println("\n--- AGREGAR VEHiCULO ---");
+        System.out.println("\n--- AGREGAR VEHICULO ---");
         System.out.println("1. Colectivo Turistico");
         System.out.println("2. Van Ejecutiva");
         System.out.println("3. Lancha Turistica");
@@ -191,6 +191,7 @@ public class SistemaTurismo {
     public void buscarVehiculoPorPatente(){
         if (vehiculos.isEmpty()){
             System.out.println("No hay vehiculos registrados.");
+            return;
         }
         System.out.println("Ingrese la patente a buscar: ");
         String patenteBuscada = scanner.nextLine();
@@ -213,6 +214,33 @@ public class SistemaTurismo {
         }
         
     }
+    public void mostrarVehiculosCapacidad(){
+        if (vehiculos.isEmpty()){
+            System.out.println("No hay vehiculos registrados.");
+            return;
+        }
+        System.out.println("Ingrese una capacidad minima: ");
+        int capacidadMinima = scanner.nextInt();
+        
+        boolean encontrado = false;
+        
+        for (Vehiculo v: vehiculos){
+            if (v.getCapacidadPasajeros() > capacidadMinima){
+                System.out.println("=============================");
+                System.out.println("Patente: " + v.getPatente());
+                System.out.println("Marca: " + v.getMarca());
+                System.out.println("Capacidad: " + v.getCapacidadPasajeros());
+                System.out.println("Anio: " + v.getAnioFabricacion());
+                
+                encontrado = true;
+            }
+        }
+        
+        if (!encontrado){
+            System.out.println("No hay Vehiculos con capacidad mayor a " + capacidadMinima);
+        }
+    }
+    
     public void iniciar(){
         int opcion = 0;
         
@@ -222,9 +250,9 @@ public class SistemaTurismo {
             System.out.println("2. Mostrar todos los vehiculos");
             System.out.println("3. Realizar servicios turisticos");
             System.out.println("4. Buscar vehiculo por patente");
-            System.out.println("5. Mostrar vehiculo por patente");
-            System.out.println("6. Mostrar vehiculos ordenados por anio");
-            System.out.println("7. Mostrar vehiculos ordenados por capacidad");
+            System.out.println("5. Mostrar vehiculos con capacidad mayor a un valor ingresado");
+            System.out.println("6. Mostrar vehiculos ordenados por anio de fabricacion descendente");
+            System.out.println("7. Mostrar vehiculos ordenados por capacidad descendente");
             System.out.println("8. Salir");
             
             System.out.println("Seleccione una opcion: ");
@@ -248,7 +276,10 @@ public class SistemaTurismo {
                     System.out.println("Buscando vehiculo por patente");
                     buscarVehiculoPorPatente();
                 }
-                case 5 -> System.out.println("Mostrar vehiculos con capacidad mayor a un valor ingresado");
+                case 5 -> {
+                    System.out.println("Mostrando vehiculos con capacidad mayor a un valor ingresado");
+                    mostrarVehiculosCapacidad();
+                }
                 case 6 -> System.out.println("Mostrar vehiculos ordenados por anio de fabricacion descendente");
                 case 7 -> System.out.println("Mostrar vehiculos ordenados por capacidad descendente");
                 case 8 -> System.out.println("Saliendo del sistema...");
