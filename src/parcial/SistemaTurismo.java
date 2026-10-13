@@ -83,12 +83,18 @@ public class SistemaTurismo {
         }
         switch (tipo){
             case 1:
-                System.out.println("Cantidad de pisos: ");
+                System.out.println("Cantidad de pisos(1 o 2): ");
                 int cantidadPisos = scanner.nextInt();
+                while (cantidadPisos != 1 && cantidadPisos !=2){
+                    System.out.println("La cantidad de pisos debe ser 1 o 2");
+                    System.out.println("Cantidad de pisos(1 o 2): ");
+                    cantidadPisos = scanner.nextInt();
+                }
                 
                 ColectivoTuristico colectivo = new ColectivoTuristico(
                         patente, marca, capacidadPasajeros, anioFabricacion, cantidadPisos);
                 vehiculos.add(colectivo);
+                
                 System.out.println("Colectivo agregado correctamente.");
                 break;
             
@@ -116,8 +122,16 @@ public class SistemaTurismo {
             
             case 3:
                 scanner.nextLine();
-                System.out.println("Tipo de motor: ");
-                String tipoMotor = scanner.nextLine();
+                System.out.println("Tipo de motor(NAFTA/DIESEL/ELECTRICO): ");
+                String tipoMotor = scanner.nextLine().toUpperCase();
+                
+                while (!tipoMotor.equals("NAFTA") 
+                        && !tipoMotor.equals("DIESEL")
+                        && !tipoMotor.equals("ELECTRICO")){
+                    System.out.println("Tipo de motor Invalido");
+                    System.out.println("Ingrese NAFTA, DIESEL o ELECTRICO");
+                    tipoMotor = scanner.nextLine().toUpperCase();
+                }
                 
                 LanchaTuristica lancha = new LanchaTuristica(
                 patente, marca, capacidadPasajeros, anioFabricacion, tipoMotor);
@@ -132,6 +146,9 @@ public class SistemaTurismo {
                     
         }
         
+    }
+    public void mostrarTodosLosVehiculos(){
+       
     }
     public void iniciar(){
         int opcion = 0;
